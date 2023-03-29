@@ -32,16 +32,13 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         {"role": "system", "content": openai_system + "greet " + update.effective_user.first_name},
         {"role": "user", "content": "who are you and what can you help me with?"}
     ]
-    logging.info("Request: ")
-    logging.info(request)
+    logging.info("Request: " + str(request))
 
     response = openai.ChatCompletion.create(
     model = "gpt-3.5-turbo",
     messages = request
     )
-    logging.info("Reply: ")
-    logging.info(response['usage'])
-    logging.info(response['choices'][0]['message'])
+    logging.info("Reply: " + str(response['usage']) + str(response['choices'][0]['message']))
 
     await context.bot.send_message(chat_id=update.effective_chat.id, text=response['choices'][0]['message']['content'])
 
@@ -60,8 +57,7 @@ async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 {"role": "system", "content": openai_system + "no greetings"},
                 {"role": "user", "content": update.message.text}
             ]
-    logging.info("Request: ")
-    logging.info(request)
+    logging.info("Request: " + str(request))
 
     response = openai.ChatCompletion.create(
     model = "gpt-3.5-turbo",
@@ -84,4 +80,3 @@ if __name__ == '__main__':
     application.add_handler(echo_handler)
 
     application.run_polling()
-
