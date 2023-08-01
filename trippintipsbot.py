@@ -8,8 +8,8 @@ from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler, Messa
 
 
 #api keys
-openai.api_key = "<API KEY>"
-telegram_api_key = "<API KEY>"
+openai.api_key = os.getenv('API_OPENAI')
+telegram_api_key = os.getenv('API_TELEGRAM')
 
 
 #system message to openai
