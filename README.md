@@ -17,9 +17,9 @@ docker build -t trippintips .
 3. Once the image has been built, you can run the container with the following command:
 ```bash
 docker run -d \
-  --name=trippingtipsbot \
-  -e API_OPENAI=<OPENAI_API_KEY> \
-  -e API_TELEGRAM=<TELEGRAM_API_KEY> \
+  --name = trippingtipsbot \
+  -e API_OPENAI = <OPENAI_API_KEY> \
+  -e API_TELEGRAM = <TELEGRAM_API_KEY> \
   --restart unless-stopped \
   trippintips
 ```
