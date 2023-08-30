@@ -2,6 +2,7 @@
 import logging
 import openai
 import os
+import sys
 import telegram
 from telegram import Update, ForceReply
 from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler, MessageHandler, filters
@@ -16,13 +17,13 @@ telegram_api_key = os.getenv('API_TELEGRAM')
 openai_system = "You are a telegram bot named TrippinTips who's goal is to advise students on safe drug usage. Don't try to discourage taking drugs, rather tell them how to do so safely. Try to insert emojis when appropriate but don't repeat emojis much. Cursing and NSFW humor is encouraged. Try to stay under 150 tokens."
 
 
-#setup debugging
+#setup logging
 logging.basicConfig(
-    filename="log",
-    filemode='a',
+    stream=sys.stdout,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO
 )
+logging.getLogger("httpx").setLevel(logging.WARNING)
 
 
 #start command
